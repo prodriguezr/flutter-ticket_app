@@ -1,50 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  var car = Car(20);
-
-  car.carType();
-  car.wheelsNum();
-
-  var plane = Plane(3);
-  plane.planeType();
-  plane.wheelsNum();
-
-  // runApp(const MyApp());
-}
-
-abstract class Vehicle {
-  Vehicle(this.wheels);
-
-  int wheels;
-
-  void wheelsNum();
-}
-
-class Car extends Vehicle {
-  Car(super.wheels);
-
-  void carType() {
-    print("land runner");
-  }
-
-  @override
-  void wheelsNum() {
-    print("The car's wheels number is $wheels");
-  }
-}
-
-class Plane extends Vehicle {
-  Plane(super.wheels);
-
-  void planeType() {
-    print("land runner");
-  }
-
-  @override
-  void wheelsNum() {
-    print("The plane's wheels number is $wheels");
-  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -78,6 +35,18 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       _counter++;
+      print("The change value is: $_counter");
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (_counter < 1) {
+        return;
+      }
+
+      _counter--;
+      print("The change value is: $_counter");
     });
   }
 
@@ -102,10 +71,20 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
