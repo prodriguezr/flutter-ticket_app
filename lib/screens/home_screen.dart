@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ticket_app/base/res/media.dart';
 import 'package:ticket_app/base/res/styles/app_styles.dart';
+import 'package:ticket_app/base/widgets/app_double_text.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,14 +12,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppStyles.backgroundColor,
-      body: ListView(
-        children: [
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 30,
+            ),
+            Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,8 +74,15 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-          )
-        ],
+            SizedBox(
+              height: 30,
+            ),
+            AppDoubleText(
+              bigText: 'Upcoming flights',
+              smallText: 'View all',
+            ),
+          ],
+        ),
       ),
     );
   }
